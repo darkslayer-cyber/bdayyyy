@@ -19,7 +19,7 @@ if (!initBf || initBf.toLowerCase() === 'rexon') {
 const appState = {
     gfName: initGf,
     bfName: initBf,
-    bdayDate: localStorage.getItem('bday_date') || '19 November',
+    bdayDate: localStorage.getItem('bday_date') || '23 November',
     letterMsg: localStorage.getItem('bday_letter') || '',
     savedCoupons: JSON.parse(localStorage.getItem('bday_coupons') || '[]'),
     soundEnabled: true,
@@ -1551,7 +1551,7 @@ function initPersonalizationForm() {
                 localStorage.clear();
                 appState.gfName = 'Karti';
                 appState.bfName = 'Tarun';
-                appState.bdayDate = '19 November';
+                appState.bdayDate = '23 November';
                 appState.letterMsg = '';
                 appState.savedCoupons = [];
                 applyPersonalization();
