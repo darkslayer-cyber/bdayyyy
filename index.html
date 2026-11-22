@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Karti! 💖</title>
+    <!-- Google Fonts for cute cartoonish & script typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Grandstander:wght@700;900&family=Mali:ital,wght@0,500;0,700;1,600&family=Pacifico&family=Sniglet:wght@800&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Canvas Confetti Library for celebration effects -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- Floating Background Particles (Hearts, Sparkles) -->
+    <div id="particle-canvas-container">
+        <canvas id="sparkle-canvas"></canvas>
+    </div>
+
+    <!-- Floating Top Control Bar -->
+    <header class="top-nav">
+        <div class="nav-brand">
+            <span class="heart-pulse">💖</span>
+            <span class="nav-title">Karti's Special Day</span>
+        </div>
+        <div class="nav-actions">
+            <button id="btn-music" class="nav-btn" title="Toggle Cute Birthday BGM">
+                <span class="btn-icon">🎵</span>
+                <span class="btn-text">Music: OFF</span>
+            </button>
+            <button id="btn-sound" class="nav-btn" title="Toggle Sound FX">
+                <span class="btn-icon">🔊</span>
+                <span class="btn-text">Sound: ON</span>
+            </button>
+            <button id="btn-customize" class="nav-btn highlight" title="Customize Names, Date & Messages">
+                <span class="btn-icon">⚙️</span>
+                <span class="btn-text">Personalize</span>
+            </button>
+            <a href="#games-arcade" class="nav-btn play-btn" title="Jump to Mini Games">
+                <span class="btn-icon">🎮</span>
+                <span class="btn-text">Play Games</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO BIRTHDAY BANNER -->
+    <main class="hero-wrapper">
+        <section class="birthday-banner-container" id="hero-banner">
+            <!-- Decorative Festive Bunting (Pennant flags) -->
+            <div class="bunting bunting-left">
+                <div class="bunting-string"></div>
+                <div class="flags">
+                    <span class="flag f-1"></span>
+                    <span class="flag f-2"></span>
+                    <span class="flag f-3"></span>
+                    <span class="flag f-4"></span>
+                    <span class="flag f-5"></span>
+                    <span class="flag f-6"></span>
+                    <span class="flag f-7"></span>
+                </div>
+            </div>
+
+            <div class="bunting bunting-right">
+                <div class="bunting-string"></div>
+                <div class="flags">
+                    <span class="flag f-7"></span>
+                    <span class="flag f-6"></span>
+                    <span class="flag f-5"></span>
+                    <span class="flag f-4"></span>
+                    <span class="flag f-3"></span>
+                    <span class="flag f-2"></span>
+                    <span class="flag f-1"></span>
+                </div>
+            </div>
+
+            <!-- Floating Decorative Sparkles & Elements -->
+            <div class="deco-sparkle s1">✦</div>
+            <div class="deco-sparkle s2">★</div>
+            <div class="deco-sparkle s3">✦</div>
+            <div class="deco-sparkle s4">★</div>
+            <div class="deco-sparkle s5">✦</div>
+
+            <!-- Floating Balloons on Hero -->
+            <div class="floating-balloon balloon-left" id="balloon-hero-1" title="Click to pop me!">
+                <div class="balloon-body"></div>
+                <div class="balloon-string"></div>
+            </div>
+            <div class="floating-balloon balloon-right" id="balloon-hero-2" title="Click to pop me!">
+                <div class="balloon-body"></div>
+                <div class="balloon-string"></div>
+            </div>
+
+            <!-- MAIN HERO CONTENT: 2-COLUMN GRID -->
+            <div class="hero-content-grid">
+                
+                <!-- LEFT COLUMN: Typography & Action Buttons -->
+                <div class="hero-left">
+                    
+                    <!-- 3D "Happy Birthday" Text with Party Hat -->
+                    <div class="birthday-title-group">
+                        <div class="happy-word-container">
+                            <span class="happy-text" id="disp-happy">Happy</span>
+                            <!-- Cute tilted striped party hat -->
+                            <div class="party-hat" title="Cute Party Hat!">
+                                <div class="hat-pom"></div>
+                                <div class="hat-cone">
+                                    <div class="hat-stripe s-1"></div>
+                                    <div class="hat-stripe s-2"></div>
+                                    <div class="hat-stripe s-3"></div>
+                                </div>
+                                <div class="hat-rim"></div>
+                            </div>
+                        </div>
+                        <div class="birthday-word-container">
+                            <span class="birthday-text" id="disp-birthday">Birthday</span>
+                        </div>
+                    </div>
+
+                    <!-- Date Badge: 19 November with stars -->
+                    <div class="date-badge-pill" id="date-badge" title="Special Date!">
+                        <span class="badge-star">★</span>
+                        <span class="badge-date-text" id="disp-date">19 November</span>
+                        <span class="badge-star">★</span>
+                    </div>
+
+                    <!-- Action Pill Buttons: Click Here & Tarun's Promises (Unique Content!) -->
+                    <div class="hero-buttons-row">
+                        <button class="pill-btn primary-pill" id="btn-click-here">
+                            <span class="pill-icon">💖</span>
+                            <span class="pill-text" id="disp-btn-name">Click Here Karti</span>
+                        </button>
+
+                        <!-- Changed to Tarun's 10 Promises so it doesn't duplicate the envelope letter! -->
+                        <button class="pill-btn secondary-pill" id="btn-tarun-promises">
+                            <span class="pill-icon">⭐</span>
+                            <span class="pill-text" id="disp-btn-promises">Tarun's Promises</span>
+                        </button>
+                    </div>
+
+                    <!-- Envelope at Bottom Left (Dedicated for Love Letter) -->
+                    <div class="envelope-container" id="hero-envelope" title="Click to open Karti's letter!">
+                        <div class="envelope-body">
+                            <div class="envelope-top-flap"></div>
+                            <div class="envelope-front">
+                                <span class="env-to-label">TO</span>
+                                <span class="env-name" id="disp-env-name">Karti</span>
+                                <div class="env-stamp">
+                                    <span>LOVE</span>
+                                </div>
+                            </div>
+                            <div class="env-wax-seal" id="env-seal-btn">
+                                <span class="seal-letter" id="disp-seal-letter">K</span>
+                            </div>
+                        </div>
+                        <div class="env-click-hint">Click to Open Letter 💌</div>
+                    </div>
+
+                </div>
+
+                <!-- CENTER/DECORATIVE: Retro Smiley Face Sticker -->
+                <div class="hero-center-sticker">
+                    <div class="smiley-sticker" id="smiley-face" title="Click to make me happy!">
+                        <div class="smiley-eye left-eye"></div>
+                        <div class="smiley-eye right-eye"></div>
+                        <div class="smiley-mouth"></div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Interactive Magic Stardust Snowglobe Orb (Creative Centerpiece!) -->
+                <div class="hero-right">
+                    
+                    <!-- Circular Stamp Seal Badge in Top-Right -->
+                    <div class="top-stamp-badge" id="bday-stamp" title="Birthday Stamp!">
+                        <div class="stamp-outer-ring">
+                            <svg viewBox="0 0 100 100" class="stamp-svg">
+                                <path id="stamp-curve" d="M 18,50 A 32,32 0 1,1 82,50 A 32,32 0 1,1 18,50" fill="none"/>
+                                <text class="stamp-text">
+                                    <textPath href="#stamp-curve" startOffset="50%" text-anchor="middle">
+                                        ★ HAPPY BIRTHDAY ★
+                                    </textPath>
+                                </text>
+                            </svg>
+                            <div class="stamp-heart">❤</div>
+                        </div>
+                    </div>
+
+                    <!-- CREATIVE CENTERPIECE: Interactive Magic Birthday Stardust Snowglobe Orb -->
+                    <div class="magic-orb-wrapper" id="orb-interactive-wrapper">
+                        <div class="magic-snowglobe-sphere" id="magic-orb" title="Click to shake the magic stardust orb!">
+                            <!-- Canvas for swirling stardust, floating fairy lights and pulsing 3D heart -->
+                            <canvas id="orb-canvas" width="280" height="280"></canvas>
+                            <div class="orb-glass-shine"></div>
+                            <div class="orb-center-badge">
+                                <span class="orb-badge-heart">💖</span>
+                                <span class="orb-badge-sub">Shake Me!</span>
+                            </div>
+                        </div>
+
+                        <!-- Pill Tag under the orb: Karti's Wish Orb -->
+                        <div class="dear-name-pill" id="dear-pill">
+                            <span class="dear-text" id="disp-dear-name">✨ Karti's Wish Orb ✨</span>
+                        </div>
+
+                        <!-- Floating Prophecy / Fortune Bubble when shaken -->
+                        <div class="orb-prophecy-bubble hidden" id="orb-wish-popup">
+                            <span class="prophecy-sparkle">🔮</span>
+                            <span class="prophecy-text" id="orb-wish-text">"You are Tarun's greatest wish come true!"</span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Right: Washi Taped Card leading to the Arcade -->
+                    <div class="taped-card-wrapper" id="games-card-trigger">
+                        <div class="washi-tape"></div>
+                        <a href="#games-arcade" class="taped-card-content">
+                            <span class="tape-badge-new">PLAY</span>
+                            <span class="tape-card-text">Birthday Games Arcade</span>
+                            <span class="tape-arrow">➔</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- SECTION 2: INTERACTIVE CAKE & CANDLE CEREMONY -->
+    <section class="cake-ceremony-section" id="cake-ceremony">
+        <div class="section-container">
+            <div class="section-heading">
+                <span class="section-badge">✨ Make a Wish ✨</span>
+                <h2 class="section-title">Blow Out the Candles, <span class="accent-name" id="disp-cake-name">Karti</span>!</h2>
+                <p class="section-subtitle">Click the button below to blow out your birthday candles and make your dreams come true!</p>
+            </div>
+
+            <div class="cake-display-area">
+                <div class="interactive-cake" id="bday-cake">
+                    <!-- Candles -->
+                    <div class="candles-row">
+                        <div class="candle c-1 lit">
+                            <div class="flame"></div>
+                            <div class="wick"></div>
+                            <div class="candle-stick"></div>
+                        </div>
+                        <div class="candle c-2 lit">
+                            <div class="flame"></div>
+                            <div class="wick"></div>
+                            <div class="candle-stick"></div>
+                        </div>
+                        <div class="candle c-3 lit main-candle">
+                            <div class="flame"></div>
+                            <div class="wick"></div>
+                            <div class="candle-stick"></div>
+                        </div>
+                        <div class="candle c-4 lit">
+                            <div class="flame"></div>
+                            <div class="wick"></div>
+                            <div class="candle-stick"></div>
+                        </div>
+                        <div class="candle c-5 lit">
+                            <div class="flame"></div>
+                            <div class="wick"></div>
+                            <div class="candle-stick"></div>
+                        </div>
+                    </div>
+
+                    <!-- Cake Tiers -->
+                    <div class="cake-tier tier-top">
+                        <div class="frosting-drippings">
+                            <span class="drip"></span><span class="drip"></span><span class="drip"></span><span class="drip"></span><span class="drip"></span>
+                        </div>
+                        <div class="strawberries">
+                            <span class="berry">🍓</span>
+                            <span class="berry">🍓</span>
+                            <span class="berry">🍓</span>
+                        </div>
+                    </div>
+                    <div class="cake-tier tier-middle">
+                        <div class="cream-border"></div>
+                        <div class="sprinkles"></div>
+                    </div>
+                    <div class="cake-tier tier-bottom">
+                        <div class="cake-stand"></div>
+                    </div>
+                </div>
+
+                <div class="cake-controls">
+                    <button class="magic-blow-btn" id="btn-blow-candles">
+                        <span class="blow-icon">🕯️💨</span>
+                        <span class="blow-text">Blow Out The Candles!</span>
+                    </button>
+                    <button class="relight-btn hidden" id="btn-relight-candles">
+                        <span>✨ Relight Candles</span>
+                    </button>
+                </div>
+
+                <!-- Wish Success Banner (Revealed when blown) -->
+                <div class="wish-banner-box hidden" id="wish-success-box">
+                    <div class="wish-heart-pulse">🎂💖🎉</div>
+                    <h3>🎉 Happy Birthday, Gorgeous! 🎉</h3>
+                    <p id="disp-wish-text">May this year bring you endless laughter, peace, happiness, and all the love you deserve. Tarun will always be right by your side!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: BIRTHDAY MINI-GAMES ARCADE -->
+    <section class="games-arcade-section" id="games-arcade">
+        <div class="section-container">
+            <div class="section-heading">
+                <span class="section-badge arcade-badge">🕹️ Arcade Zone 🎁</span>
+                <h2 class="section-title">Karti's Birthday Games Arcade</h2>
+                <p class="section-subtitle">Play these fun mini-games to win special love coupons, compliments & surprises from Tarun!</p>
+            </div>
+
+            <!-- Arcade Navigation Tabs -->
+            <div class="arcade-nav-tabs">
+                <button class="arcade-tab-btn active" data-game="game-catch">
+                    <span class="tab-icon">🎁</span>
+                    <span class="tab-title">Catch The Love</span>
+                </button>
+                <button class="arcade-tab-btn" data-game="game-memory">
+                    <span class="tab-icon">🃏</span>
+                    <span class="tab-title">Memory Match</span>
+                </button>
+                <button class="arcade-tab-btn" data-game="game-balloon">
+                    <span class="tab-icon">🎈</span>
+                    <span class="tab-title">Pop & Compliments</span>
+                </button>
+                <button class="arcade-tab-btn" data-game="game-wheel">
+                    <span class="tab-icon">🎡</span>
+                    <span class="tab-title">Spin The Wheel (12 Prizes!)</span>
+                </button>
+                <!-- Replaced Our Love Quiz with Cupid's Birthday Flight! -->
+                <button class="arcade-tab-btn" data-game="game-cupid">
+                    <span class="tab-icon">🏹</span>
+                    <span class="tab-title">Cupid's Flight</span>
+                </button>
+            </div>
+
+            <!-- GAME 1: CATCH THE LOVE & GIFTS -->
+            <div class="arcade-game-panel active" id="game-catch">
+                <div class="game-card-container">
+                    <div class="game-header-bar">
+                        <div class="game-info-col">
+                            <h3>🎁 Catch The Birthday Love!</h3>
+                            <p>Move your basket to catch cakes, gifts, and hearts. Avoid the storm clouds! Score points to unlock Love Coupons!</p>
+                        </div>
+                        <div class="game-stats-col">
+                            <div class="stat-pill">Score: <span id="catch-score">0</span></div>
+                            <div class="stat-pill">Best: <span id="catch-best">0</span></div>
+                            <div class="stat-pill">Lives: <span id="catch-lives">❤️❤️❤️</span></div>
+                        </div>
+                    </div>
+
+                    <div class="arcade-canvas-wrapper" id="catch-canvas-area">
+                        <canvas id="catch-canvas" width="600" height="400"></canvas>
+                        <!-- Start / Game Over Overlay -->
+                        <div class="arcade-overlay" id="catch-overlay">
+                            <div class="overlay-modal">
+                                <div class="overlay-icon">🧺✨</div>
+                                <h3 id="catch-overlay-title">Catch The Birthday Gifts!</h3>
+                                <p id="catch-overlay-desc">Use your Mouse, Touch Swipe, or Left/Right Arrow keys to catch good items and avoid storm clouds!</p>
+                                <button class="arcade-action-btn" id="btn-start-catch">Play Game!</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Touch Mobile Controls for Catch Game -->
+                    <div class="mobile-touch-controls">
+                        <button class="touch-btn" id="btn-move-left">◀ Move Left</button>
+                        <button class="touch-btn" id="btn-move-right">Move Right ▶</button>
+                    </div>
+
+                    <!-- Milestone Unlocked Coupons -->
+                    <div class="unlocked-coupons-row" id="catch-coupons-unlocked">
+                        <div class="coupon-chip locked" id="coupon-1">
+                            <span class="c-icon">🔒</span>
+                            <span class="c-text">Score 50: Unlimited Warm Hugs</span>
+                        </div>
+                        <div class="coupon-chip locked" id="coupon-2">
+                            <span class="c-icon">🔒</span>
+                            <span class="c-text">Score 100: Favorite Meal Date</span>
+                        </div>
+                        <div class="coupon-chip locked" id="coupon-3">
+                            <span class="c-icon">🔒</span>
+                            <span class="c-text">Score 150: 1 Day Princess Treatment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 2: MEMORY MATCH: LOVE EDITION -->
+            <div class="arcade-game-panel" id="game-memory">
+                <div class="game-card-container">
+                    <div class="game-header-bar">
+                        <div class="game-info-col">
+                            <h3>🃏 Memory Match: Love Edition</h3>
+                            <p>Find all 8 matching romantic pairs to unlock Tarun's secret birthday note!</p>
+                        </div>
+                        <div class="game-stats-col">
+                            <div class="stat-pill">Moves: <span id="memory-moves">0</span></div>
+                            <div class="stat-pill">Pairs: <span id="memory-matched">0 / 8</span></div>
+                            <button class="stat-pill restart-btn" id="btn-restart-memory">🔄 Restart</button>
+                        </div>
+                    </div>
+
+                    <!-- 4x4 Grid of Cards -->
+                    <div class="memory-grid-board" id="memory-board">
+                        <!-- Injected dynamically via JS -->
+                    </div>
+
+                    <!-- Victory Banner for Memory -->
+                    <div class="memory-win-box hidden" id="memory-win-box">
+                        <div class="win-sparkle">💖✨🎉</div>
+                        <h3>You Won Karti! Perfect Match!</h3>
+                        <p>Just like these cards, you and Tarun are the perfect match in this entire universe! 💕</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 3: POP BALLOONS & COMPLIMENTS -->
+            <div class="arcade-game-panel" id="game-balloon">
+                <div class="game-card-container">
+                    <div class="game-header-bar">
+                        <div class="game-info-col">
+                            <h3>🎈 Pop The Balloons & Reveal Compliments!</h3>
+                            <p>Pop the floating balloons to hear sweet pop sounds and discover why Tarun loves you so much!</p>
+                        </div>
+                        <div class="game-stats-col">
+                            <div class="stat-pill">Popped: <span id="balloons-popped-count">0</span> 🎈</div>
+                            <button class="stat-pill" id="btn-spawn-more-balloons">➕ Release Balloons</button>
+                        </div>
+                    </div>
+
+                    <!-- Balloon Garden Area -->
+                    <div class="balloon-stage-area" id="balloon-stage">
+                        <!-- Balloons float up here dynamically -->
+                        <div class="stage-hint">Tap on any floating balloon to pop it! 🎈</div>
+                    </div>
+
+                    <!-- Live Compliment Banner -->
+                    <div class="latest-compliment-box" id="compliment-display">
+                        <span class="compliment-heart">💌</span>
+                        <span class="compliment-text" id="active-compliment-text">"Pop a balloon above to reveal a sweet message!"</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 4: LUCKY BIRTHDAY SPIN WHEEL (EXPANDED TO 12 ITEMS!) -->
+            <div class="arcade-game-panel" id="game-wheel">
+                <div class="game-card-container">
+                    <div class="game-header-bar">
+                        <div class="game-info-col">
+                            <h3>🎡 Lucky Birthday Fortune Wheel (12 Special Treats!)</h3>
+                            <p>Spin the wheel to win a real birthday treat or coupon that Tarun must honor!</p>
+                        </div>
+                        <div class="game-stats-col">
+                            <div class="stat-pill">Prizes: <span>12 Treats</span> 🎁</div>
+                            <div class="stat-pill">Spins: <span>Unlimited</span> ✨</div>
+                        </div>
+                    </div>
+
+                    <div class="wheel-stage-container">
+                        <div class="wheel-wrapper">
+                            <div class="wheel-pointer">▼</div>
+                            <canvas id="wheel-canvas" width="440" height="440"></canvas>
+                        </div>
+                        <div class="wheel-controls">
+                            <button class="spin-action-btn" id="btn-spin-wheel">
+                                <span>🎯 SPIN THE WHEEL!</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wheel Result Prize Modal -->
+                    <div class="wheel-prize-banner hidden" id="wheel-prize-result">
+                        <div class="prize-tag">🎉 CONGRATULATIONS KARTI! 🎉</div>
+                        <h4 id="wheel-prize-title">You Won: Candlelight Dinner Date!</h4>
+                        <p>Show this coupon to Tarun to claim your reward immediately! 💖</p>
+                        <button class="save-coupon-btn" id="btn-claim-prize">Collect Coupon 🎟️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 5: CUPID KARTI'S BIRTHDAY FLIGHT (NEW EXCITING GAME IN PLACE OF QUIZ!) -->
+            <div class="arcade-game-panel" id="game-cupid">
+                <div class="game-card-container">
+                    <div class="game-header-bar">
+                        <div class="game-info-col">
+                            <h3>🏹 Cupid Karti's Love Flight</h3>
+                            <p>Flap your wings to fly through clouds and pastel candy pillars! Collect cakes, strawberries & stars!</p>
+                        </div>
+                        <div class="game-stats-col">
+                            <div class="stat-pill">Score: <span id="cupid-score">0</span></div>
+                            <div class="stat-pill">Best: <span id="cupid-best">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="arcade-canvas-wrapper" id="cupid-canvas-area">
+                        <canvas id="cupid-canvas" width="600" height="400"></canvas>
+                        <!-- Start / Game Over Overlay -->
+                        <div class="arcade-overlay" id="cupid-overlay">
+                            <div class="overlay-modal">
+                                <div class="overlay-icon">🏹💖</div>
+                                <h3 id="cupid-overlay-title">Cupid Karti's Flight!</h3>
+                                <p id="cupid-overlay-desc">Click, Tap, or press Spacebar to flap wings! Avoid obstacles and collect sweet treats!</p>
+                                <button class="arcade-action-btn" id="btn-start-cupid">Take Flight! 🚀</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Touch Flap Control -->
+                    <div class="mobile-touch-controls">
+                        <button class="touch-btn flap-btn" id="btn-cupid-flap">🕊️ TAP TO FLAP WINGS!</button>
+                    </div>
+
+                    <!-- Unlocked Cupid Trophy -->
+                    <div class="unlocked-coupons-row">
+                        <div class="coupon-chip locked" id="cupid-trophy-chip">
+                            <span class="c-icon">🔒</span>
+                            <span class="c-text">Score 50: Master Cupid Love Diploma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REWARD VAULT / SAVED COUPONS SECTION -->
+            <div class="coupons-vault-box" id="coupons-vault">
+                <div class="vault-header">
+                    <div class="vault-title-row">
+                        <span class="vault-icon">🎟️</span>
+                        <h3>Karti's Birthday Coupon Wallet</h3>
+                    </div>
+                    <p>Coupons won from the games are saved here! Take a screenshot anytime to redeem with Tarun!</p>
+                </div>
+                <div class="vault-coupons-grid" id="vault-coupons-list">
+                    <!-- Dynamic coupon cards -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: SWEET REASONS & LOVE COUNTER -->
+    <section class="love-counter-section">
+        <div class="section-container">
+            <div class="love-card-banner">
+                <div class="banner-heart-art">💖</div>
+                <h2>Why You Are So Irreplaceable</h2>
+                <div class="reasons-carousel">
+                    <div class="reason-bubble" id="active-reason-quote">
+                        "Your sweet laughter is literally the best sound in the entire world, and seeing you smile makes every ordinary day magical."
+                    </div>
+                    <button class="next-reason-btn" id="btn-next-reason">💖 Another Reason Why I Love You ➜</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL 1: SURPRISE POPUP MODAL (When clicking "💖 Click Here Karti") -->
+    <div class="custom-modal-backdrop" id="modal-surprise">
+        <div class="modal-card surprise-modal-card">
+            <button class="modal-close-btn" id="btn-close-surprise">&times;</button>
+            <div class="modal-header-icon">🎉🎂💖</div>
+            <h2 class="modal-title">Special Birthday Surprise For <span class="accent-name" id="disp-surprise-name">Karti</span>!</h2>
+            <div class="modal-body-content">
+                <p class="modal-sweet-lead">
+                    Happy Birthday to the most beautiful, kind-hearted, and adorable girl in the world! ✨
+                </p>
+                <div class="modal-features-list">
+                    <div class="m-feat-item">
+                        <span class="m-icon">🌟</span>
+                        <div>
+                            <strong>You Bring Joy Everywhere</strong>
+                            <p>Every moment spent with you is filled with warmth and unforgettable memories.</p>
+                        </div>
+                    </div>
+                    <div class="m-feat-item">
+                        <span class="m-icon">🧁</span>
+                        <div>
+                            <strong>Today Is All About You</strong>
+                            <p>Eat all the sweets you want, make the biggest wishes, and enjoy every second of your day!</p>
+                        </div>
+                    </div>
+                    <div class="m-feat-item">
+                        <span class="m-icon">🔒</span>
+                        <div>
+                            <strong>Tarun's Birthday Promise</strong>
+                            <p>I promise to always cheer you up, support your dreams, and make you laugh every single day.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer-actions">
+                <button class="modal-primary-btn" id="btn-surprise-confetti">Shower More Confetti! 🎊</button>
+                <a href="#games-arcade" class="modal-secondary-btn" id="btn-surprise-to-games">Play Birthday Games 🎮</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: TARUN'S 10 ROMANTIC PROMISES (Opened via "⭐ Tarun's Promises") -->
+    <div class="custom-modal-backdrop" id="modal-promises">
+        <div class="modal-card promises-modal-card">
+            <button class="modal-close-btn" id="btn-close-promises">&times;</button>
+            <div class="modal-header-icon">⭐📜💖</div>
+            <h2 class="modal-title">Tarun's 10 Promises to <span class="accent-name">Karti</span></h2>
+            <p class="settings-subtitle">My eternal promises to you on your special birthday and every day after:</p>
+            
+            <div class="promises-scroll-list">
+                <div class="promise-item">
+                    <span class="p-num">1</span>
+                    <div class="p-body">
+                        <strong>Always Make You Laugh:</strong>
+                        <p>Even on your grumpiest days, I will do whatever silly dance or joke it takes to bring your smile back.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">2</span>
+                    <div class="p-body">
+                        <strong>Unlimited Hugs & Forehead Kisses:</strong>
+                        <p>You never have to ask twice. Anytime you need warmth, my arms are your permanent home.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">3</span>
+                    <div class="p-body">
+                        <strong>Midnight Snack Partner:</strong>
+                        <p>Whenever you crave ice cream, boba, or midnight snacks, I will gladly join you or go fetch them.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">4</span>
+                    <div class="p-body">
+                        <strong>Always Listen to Your Rants:</strong>
+                        <p>I promise to listen to everything you have to say, validate your feelings, and hold your hand.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">5</span>
+                    <div class="p-body">
+                        <strong>Your Biggest Cheerleader:</strong>
+                        <p>I will always believe in your goals, cheer for your victories, and lift you up through hurdles.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">6</span>
+                    <div class="p-body">
+                        <strong>Never Go to Sleep Angry:</strong>
+                        <p>No matter the disagreement, love and communication will always win before the night ends.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">7</span>
+                    <div class="p-body">
+                        <strong>Princess Treatment Every Day:</strong>
+                        <p>Opening doors, carrying heavy bags, and treating you like the royalty you truly are.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">8</span>
+                    <div class="p-body">
+                        <strong>Take Lots of Pretty Photos:</strong>
+                        <p>I promise to patiently take as many photos as you want until you get the perfect angle!</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">9</span>
+                    <div class="p-body">
+                        <strong>Grow Old & Goofy Together:</strong>
+                        <p>To keep the same playful, teasing, adorable spark alive even when we're 80 years old.</p>
+                    </div>
+                </div>
+                <div class="promise-item">
+                    <span class="p-num">10</span>
+                    <div class="p-body">
+                        <strong>Love You More Each Passing Day:</strong>
+                        <p>My love for you will only grow deeper, stronger, and more unwavering with every heartbeat.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer-actions" style="margin-top: 20px;">
+                <button class="modal-primary-btn" id="btn-seal-promises">I Accept Tarun's Promises! 💖</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: HANDWRITTEN LOVE LETTER (Opened via the Envelope) -->
+    <div class="custom-modal-backdrop" id="modal-letter">
+        <div class="modal-card letter-modal-card">
+            <button class="modal-close-btn" id="btn-close-letter">&times;</button>
+            
+            <div class="letter-paper">
+                <div class="letter-stamp-deco">❤️</div>
+                <div class="letter-header">
+                    <span class="letter-date" id="disp-letter-date">November 19, 2026</span>
+                    <h3 class="letter-greeting">Dearest <span id="disp-letter-recipient">Karti</span>,</h3>
+                </div>
+                
+                <div class="letter-text-body" id="disp-letter-body">
+                    <p>Happy Birthday, my love! Words will never be enough to tell you how truly grateful I am to have you in my life.</p>
+                    <p>Your smile brightens even my darkest days, and your kindness inspires me to be a better person. On your birthday, I wish you all the happiness, good health, and success in the world.</p>
+                    <p>I hope you have the most magical day today, full of sweet surprises, laughter, and everything your heart desires.</p>
+                    <p>Always and forever yours,</p>
+                </div>
+                
+                <div class="letter-signature">
+                    <span class="sig-name" id="disp-letter-sender">Tarun ❤️</span>
+                </div>
+            </div>
+
+            <div class="letter-modal-footer">
+                <button class="modal-primary-btn" id="btn-letter-kiss">Send a Kiss Back 💋</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: PERSONALIZATION & CUSTOMIZATION DRAWER -->
+    <div class="custom-modal-backdrop" id="modal-customize">
+        <div class="modal-card settings-modal-card">
+            <button class="modal-close-btn" id="btn-close-customize">&times;</button>
+            <div class="modal-header-icon">⚙️💖</div>
+            <h2 class="modal-title">Personalize This Birthday Site</h2>
+            <p class="settings-subtitle">Customize names, dates, and messages to make it 100% uniquely yours!</p>
+            
+            <form id="customize-form" class="settings-form">
+                <div class="form-row">
+                    <label for="input-gf-name">Girlfriend's Name:</label>
+                    <input type="text" id="input-gf-name" value="Karti" placeholder="e.g. Karti" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="input-bf-name">Your Name (Boyfriend):</label>
+                    <input type="text" id="input-bf-name" value="Tarun" placeholder="e.g. Tarun" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="input-bday-date">Birthday Date:</label>
+                    <input type="text" id="input-bday-date" value="19 November" placeholder="e.g. 19 November" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="input-letter-msg">Love Letter Content:</label>
+                    <textarea id="input-letter-msg" rows="4" placeholder="Write your heartfelt birthday letter here..."></textarea>
+                </div>
+
+                <div class="form-actions-row">
+                    <button type="submit" class="save-settings-btn">💾 Save Changes</button>
+                    <button type="button" class="reset-settings-btn" id="btn-reset-settings">Reset to Defaults</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="birthday-footer">
+        <div class="footer-content">
+            <p>Made with all my heart for <span id="disp-footer-gf">Karti</span> by <span id="disp-footer-bf">Tarun</span> 💖</p>
+            <p class="footer-sub">Happy Birthday! May your day be as sweet as you are! 🎂✨</p>
+        </div>
+    </footer>
+
+    <!-- Audio Synthesizer Engine -->
+    <script src="sound.js"></script>
+    <!-- Main Interactive Script -->
+    <script src="script.js"></script>
+</body>
+</html>
